@@ -1,0 +1,6 @@
+name: HylexiaRewards
+version: 'v1.0.0'
+main: me.josielcm.hylexiarewards.HylexiaRewards
+api-version: '1.18'
+softdepend:
+  - PlaceholderAPI
