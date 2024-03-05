@@ -1,6 +1,4 @@
-name: HylexiaRewards
+name: Plugin Base
 version: '${version}'
-main: me.josielcm.hylexiarewards.HylexiaRewards
+main: me.josielcm.jcm.Main
 api-version: '1.18'
-softdepend:
-  - PlaceholderAPI
