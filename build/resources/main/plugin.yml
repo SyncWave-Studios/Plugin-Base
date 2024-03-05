@@ -1,4 +1,4 @@
-name: Plugin Base
+name: PluginBase
 version: 'v1.0.0'
 main: me.josielcm.jcm.Main
 api-version: '1.18'
