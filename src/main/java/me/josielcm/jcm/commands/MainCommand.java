@@ -18,8 +18,6 @@ public class MainCommand extends AbstractCommand {
     public MainCommand(MeteorSApply plugin) {
         super("cooldown");
         this.plugin = plugin;
-
-        addSubCommand(new SubCommand(plugin));
     }
 
     @Override
@@ -34,7 +32,7 @@ public class MainCommand extends AbstractCommand {
                 Player target = Bukkit.getPlayer(playerName);
 
                 if (target != null) {
-                    Material mat = Material.valueOf(material);
+                    Material mat = Material.valueOf(material.toUpperCase());
 
                     if (mat != null) {
                         if (Integer.valueOf(timInTicks) != null) {
