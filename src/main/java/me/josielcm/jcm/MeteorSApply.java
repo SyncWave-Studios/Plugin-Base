@@ -16,7 +16,7 @@ import lombok.Getter;
 import java.io.File;
 import java.io.IOException;
 
-public final class Main extends JavaPlugin {
+public final class MeteorSApply extends JavaPlugin {
 
     @Getter
     private FileConfiguration configFileCon = null;
@@ -27,7 +27,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onLoad() {
         BaseAPI.onLoad(this);
-        getLogger().warning("Loading plugin please wait...");
+        getLogger().warning("Loading MeteorSApply please wait...");
     }
     @Override
     public void onEnable() {
@@ -41,7 +41,7 @@ public final class Main extends JavaPlugin {
         commandManager.setMainCommand(mainCommand);
         commandManager.registerCommand(mainCommand);
 
-        getLogger().warning("Plugin enabled successful.");
+        getLogger().warning("MeteorSApply enabled! :D.");
 
         createFile();
     }
@@ -63,7 +63,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().warning("Plugin disabled successful.");
+        getLogger().warning("MeteorSApply disabled successfully.");
         BaseAPI.onDisable();
     }
 }

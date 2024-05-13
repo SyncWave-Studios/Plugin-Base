@@ -1,7 +1,7 @@
 package me.josielcm.jcm.api.commands;
 
 import lombok.experimental.UtilityClass;
-import me.josielcm.jcm.Main;
+import me.josielcm.jcm.MeteorSApply;
 import me.josielcm.jcm.api.utils.Colored;
 
 import org.bukkit.command.CommandSender;
@@ -43,7 +43,7 @@ public class CommandValidator {
      * @return Boolean whether the Command may be executed by the CommandSender
      */
     public static boolean canExecute(CommandSender sender, CommandBase commandBase) {
-        FileConfiguration messages = Main.getPlugin(Main.class).getConfig();
+        FileConfiguration messages = MeteorSApply.getPlugin(MeteorSApply.class).getConfig();
         if (commandBase.isPlayerOnly() && !(sender instanceof Player)) {
             sender.sendMessage(Colored.simpleparseMiniMessage(messages.getString("error.only-players", "<red>Sorry, this command only can execute by players.</red>")));
             return false;

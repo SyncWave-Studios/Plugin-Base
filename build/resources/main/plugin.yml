@@ -1,4 +1,4 @@
-name: PluginBase
-version: 'v1.0.0'
-main: me.josielcm.jcm.Main
+name: MeteorSApply
+version: '1.0'
+main: me.josielcm.jcm.MeteorSApply
 api-version: '1.18'

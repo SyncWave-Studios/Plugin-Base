@@ -2,7 +2,7 @@ package me.josielcm.jcm.commands.subscommands;
 
 import net.kyori.adventure.text.Component;
 
-import me.josielcm.jcm.Main;
+import me.josielcm.jcm.MeteorSApply;
 import me.josielcm.jcm.api.commands.AbstractCommand;
 import me.josielcm.jcm.api.commands.CommandHandler;
 import me.josielcm.jcm.api.commands.CommandInfo;
@@ -14,9 +14,9 @@ import me.josielcm.jcm.api.commands.TabCompleteHandler;
         description = "Subcommand of the main command"
 )
 public class SubCommand extends AbstractCommand {
-    private final Main plugin;
+    private final MeteorSApply plugin;
 
-    public SubCommand(Main plugin) {
+    public SubCommand(MeteorSApply plugin) {
         super("subcommand");
         this.plugin = plugin;
     }
