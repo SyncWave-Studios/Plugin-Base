@@ -26,6 +26,7 @@ public class FileConfig extends YamlConfiguration {
     protected final @NotNull JavaPlugin plugin;
     protected final @NotNull String path;
     protected final @NotNull File file;
+    protected final @NotNull File folder;
 
     /**
      * Creates a new instance of {@link FileConfig}.
@@ -41,6 +42,7 @@ public class FileConfig extends YamlConfiguration {
         this.plugin = plugin;
         this.path = path;
         this.file = new File(plugin.getDataFolder(), path);
+        this.folder = plugin.getDataFolder();
         this.createFile();
         this.reload();
     }
@@ -59,6 +61,27 @@ public class FileConfig extends YamlConfiguration {
         this.plugin = plugin;
         this.path = file.getName();
         this.file = file;
+        this.folder = plugin.getDataFolder();
+        this.createFile();
+        this.reload();
+    }
+
+    /**
+     * Creates a new instance of {@link FileConfig}.
+     * <p>
+     * This constructor also creates the file in specific folder if it doesn't exist and
+     * loads the configuration.
+     * </p>
+     *
+     * @param plugin The plugin that this config belongs to.
+     * @param path   The file to load. Must be a .yml file.
+     * @param folder The folder to save the file.
+     */
+    public FileConfig(@NotNull JavaPlugin plugin, @NotNull String path, @NotNull String folder) {
+        this.plugin = plugin;
+        this.path = path;
+        this.folder = new File(plugin.getDataFolder(), folder);
+        this.file = new File(this.folder, path);
         this.createFile();
         this.reload();
     }
@@ -80,6 +103,27 @@ public class FileConfig extends YamlConfiguration {
                 }
             } else {
                 plugin.saveResource(this.path, false);
+            }
+        }
+    }
+    
+    /** 
+     * Create the file if it doesn't exist in the specified folder.
+     * If the file is also a resource, it will be copied as the default configuration.       
+     */
+    public void createFileInFolder() {
+        if (!file.exists()) {
+            folder.mkdirs();
+
+            // If file isn't a resource, create from scratch
+            if (plugin.getResource(folder.getName() + "/" + this.path) == null) {
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                plugin.saveResource(folder.getName() + "/" + this.path, false);
             }
         }
     }
