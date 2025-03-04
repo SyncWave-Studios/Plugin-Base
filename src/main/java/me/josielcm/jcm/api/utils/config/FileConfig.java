@@ -17,7 +17,8 @@ import java.util.logging.Level;
  * the configuration file. It also provides a method to reload the configuration
  * file. You can also use it as normal {@link YamlConfiguration}.
  *
- * @author d0by
+ * @author d0by and Josiel
+ * @version 1.0
  */
 @Getter
 public class FileConfig extends YamlConfiguration {

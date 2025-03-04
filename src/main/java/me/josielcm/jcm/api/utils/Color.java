@@ -3,17 +3,15 @@ package me.josielcm.jcm.api.utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextReplacementConfig;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Colored {
+public class Color {
     private static final MiniMessage miniMessage = MiniMessage.miniMessage();
 
-    public static Component replacePlaceholders(String message, HashMap<String, Component> placeholders) {
+    public static Component placeholders(String message, HashMap<String, Component> placeholders) {
         Component finalMessage = miniMessage.deserialize(message);
 
         for (Map.Entry<String, Component> hashmap : placeholders.entrySet()) {
@@ -23,15 +21,7 @@ public class Colored {
         return finalMessage;
     }
 
-    public static Component simpleparseMiniMessage(String message) {
-        var miniMessage = MiniMessage.miniMessage();
-        return miniMessage.deserialize(message);
-    }
+    public static Component parse(String message) { return miniMessage.deserialize(message); }
 
-    public static @NotNull String simpleStringSerialize(Component message) {
-        var miniMessage = MiniMessage.miniMessage();
-        return miniMessage.serialize(message);
-    }
-
-
+    public static @NotNull String parse(Component message) { return miniMessage.serialize(message); }
 }

@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.SimpleCommandMap;
 
 import me.josielcm.jcm.api.BaseAPI;
+import me.josielcm.jcm.api.SettingsAPI;
 import me.josielcm.jcm.api.utils.reflect.ReflectField;
 import me.josielcm.jcm.api.utils.reflect.ReflectMethod;
 import me.josielcm.jcm.api.utils.reflect.ReflectionUtil;
@@ -75,7 +76,7 @@ public class CommandManager {
         if (command == null) return;
         SimpleCommandMap commandMap = GET_COMMAND_MAP_METHOD.invoke(BaseAPI.get().getPlugin().getServer());
         CommandManager.unregister(command);
-        commandMap.register("HylexiaRewards", command);
+        commandMap.register(SettingsAPI.getPrefixCommandRegister(), command);
     }
 
     public static void unregister(Command command) {

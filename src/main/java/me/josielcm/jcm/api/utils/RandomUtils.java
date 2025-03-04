@@ -4,6 +4,8 @@ import lombok.experimental.UtilityClass;
 
 import java.util.Random;
 
+import com.github.lalyos.jfiglet.FigletFont;
+
 @UtilityClass
 public class RandomUtils {
 
@@ -32,6 +34,15 @@ public class RandomUtils {
      */
     public static float randomFloat() {
         return RANDOM.nextFloat();
+    }
+
+    public static String asciiArt(String text) {
+        try {
+            return FigletFont.convertOneLine(text);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error generating ASCII art";
+        }
     }
 
 }

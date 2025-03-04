@@ -5,8 +5,9 @@ import com.google.common.collect.Lists;
 
 import me.josielcm.jcm.api.Base;
 import me.josielcm.jcm.api.BaseAPI;
-import me.josielcm.jcm.api.Lang;
+import me.josielcm.jcm.api.SettingsAPI;
 import me.josielcm.jcm.api.exception.AbstractCommandException;
+import me.josielcm.jcm.api.utils.Color;
 import me.josielcm.jcm.api.utils.Common;
 
 import org.apache.commons.lang3.Validate;
@@ -125,14 +126,14 @@ public abstract class AbstractCommand extends Command implements CommandBase {
                 if (CommandValidator.isIdentifier(args[0], subCommand)) {
                     final String[] subCommandArgs = Arrays.copyOfRange(args, 1, args.length);
                     if (subCommandArgs.length < subCommand.getMinArgs()) {
-                        Lang.COMMAND_USAGE.send(sender, subCommand.getUsage());
+                        sender.sendMessage(Color.parse(SettingsAPI.getUsageSubCMD().replace("<usage>", subCommand.getUsage())));
                         return true;
                     }
                     return ((AbstractCommand) subCommand).handle(sender, subCommandArgs);
                 }
             }
         } else if (getMinArgs() > 0) {
-            Lang.COMMAND_USAGE.send(sender, getUsage());
+            sender.sendMessage(Color.parse(SettingsAPI.getUsageCMD().replace("<usage>", getUsage())));
             return false;
         }
 

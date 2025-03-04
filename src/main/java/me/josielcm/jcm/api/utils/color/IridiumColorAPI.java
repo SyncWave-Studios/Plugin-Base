@@ -2,13 +2,11 @@ package me.josielcm.jcm.api.utils.color;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.NonNull;
-import me.josielcm.jcm.api.utils.Common;
 import me.josielcm.jcm.api.utils.color.patterns.GradientPattern;
 import me.josielcm.jcm.api.utils.color.patterns.Pattern;
 import me.josielcm.jcm.api.utils.color.patterns.RainbowPattern;
 import me.josielcm.jcm.api.utils.color.patterns.SolidPattern;
 import me.josielcm.jcm.api.utils.reflect.ReflectMethod;
-import me.josielcm.jcm.api.utils.reflect.Version;
 import net.md_5.bungee.api.ChatColor;
 
 import java.awt.*;
@@ -192,7 +190,6 @@ public class IridiumColorAPI {
      * @param start The starting color.
      * @param end   The ending color.
      * @param step  How many colors we return.
-     * @author Murcis_Luis
      * @since 1.0.0
      */
     @NonNull

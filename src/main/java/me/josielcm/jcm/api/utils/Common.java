@@ -1,6 +1,7 @@
 package me.josielcm.jcm.api.utils;
 
 import lombok.experimental.UtilityClass;
+import me.josielcm.jcm.api.SettingsAPI;
 import me.josielcm.jcm.api.utils.color.IridiumColorAPI;
 import me.josielcm.jcm.api.utils.reflect.ReflectionUtil;
 import me.josielcm.jcm.api.utils.reflect.Version;
@@ -16,7 +17,7 @@ public class Common {
 
 	private static final Pattern SPACING_CHARS_REGEX = Pattern.compile("[_ \\-]+");
 	public static final Version SERVER_VERSION = Version.valueOf(ReflectionUtil.getVersion());
-	public static String PREFIX = "&8[&2HylexiaRewards&8] &7";
+	public static String PREFIX = SettingsAPI.getPrefix();
 
 	/*
 	 * 	Colorize

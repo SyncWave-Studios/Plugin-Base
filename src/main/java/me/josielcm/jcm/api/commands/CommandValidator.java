@@ -1,11 +1,10 @@
 package me.josielcm.jcm.api.commands;
 
 import lombok.experimental.UtilityClass;
-import me.josielcm.jcm.MeteorSApply;
-import me.josielcm.jcm.api.utils.Colored;
+import me.josielcm.jcm.api.SettingsAPI;
+import me.josielcm.jcm.api.utils.Color;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 @UtilityClass
@@ -43,15 +42,14 @@ public class CommandValidator {
      * @return Boolean whether the Command may be executed by the CommandSender
      */
     public static boolean canExecute(CommandSender sender, CommandBase commandBase) {
-        FileConfiguration messages = MeteorSApply.getPlugin(MeteorSApply.class).getConfig();
         if (commandBase.isPlayerOnly() && !(sender instanceof Player)) {
-            sender.sendMessage(Colored.simpleparseMiniMessage(messages.getString("error.only-players", "<red>Sorry, this command only can execute by players.</red>")));
+            sender.sendMessage(Color.parse(SettingsAPI.getOnlyPlayers()));
             return false;
         }
 
         String perm = commandBase.getPermission();
         if (perm != null && !perm.trim().isEmpty() && !sender.hasPermission(perm)) {
-            sender.sendMessage(Colored.simpleparseMiniMessage(messages.getString("error.no-permission", "<red>Uh... you don't have the permission required to execute this command.</red>")));
+            sender.sendMessage(Color.parse(SettingsAPI.getNoPermission()));
             return false;
         }
         return true;

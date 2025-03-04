@@ -33,6 +33,7 @@ public class BaseAPI {
         enabled = false;
 
     }
+    
     public static boolean isRunning() {
         return implementation != null && enabled;
     }
