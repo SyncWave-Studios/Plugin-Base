@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id ("io.github.goooler.shadow") version "8.1.8"
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'me.josielcm'
@@ -10,6 +12,7 @@ repositories {
     maven { url = uri("https://repo.papermc.io/repository/maven-public/")}
     maven { url = uri("https://repo.extendedclip.com/releases/")}
     maven { url = uri("https://oss.sonatype.org/content/groups/public/")}
+    maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")}
     maven { url = uri("https://mvnrepository.com/artifact/org.reflections/reflections")}
 }
 
@@ -40,6 +43,10 @@ tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release = targetJavaVersion
     }
+}
+
+shadowJar {
+    relocate("com.github.lalyos.jfiglet", "me.josielcm.jfiglet")
 }
 
 processResources {
